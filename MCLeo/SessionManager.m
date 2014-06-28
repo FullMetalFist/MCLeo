@@ -68,9 +68,10 @@
 
 -(void)createSessionWithName:(NSString *)displayName{
    
-    MCPeerID *peer = [[MCPeerID alloc]initWithDisplayName:displayName];
-    [self.peers addObject:peer];
-    self.session = [[MCSession alloc]initWithPeer:peer];
+    MCPeerID *peerID = [[MCPeerID alloc]initWithDisplayName:displayName];
+    //why not just add peer?
+    [self.peers addObject:peerID];
+    self.session = [[MCSession alloc]initWithPeer:peerID];
     self.session.delegate = self;
 }
 

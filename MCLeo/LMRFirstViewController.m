@@ -63,7 +63,9 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    cell.textLabel.text = [self.store.sessionManager.peers objectAtIndex:indexPath.row];
+    MCPeerID *peerID = [self.store.sessionManager.peers objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = peerID.displayName;
     
     return cell;
 }

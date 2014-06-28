@@ -9,6 +9,7 @@
 #import "LMRSecondViewController.h"
 
 @interface LMRSecondViewController ()
+
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
 - (IBAction)sendButton:(id)sender;
@@ -24,35 +25,41 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didReceiveDataWithNotification:)
-                                                 name:@"MCDidReceiveDataNotification"
+                                                 name:@"didReceiveData"
                                                object:nil];
-    
-    
-    
-	// Do any additional setup after loading the view, typically from a nib.
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)sendButton:(id)sender {
-    NSString *string = @"Hello Leo";
-    NSData *data = [NSJSONSerialization dataWithJSONObject:string options:0 error:nil];
-
+    NSDictionary *dictionary = @{@"message": @"Hello Leo"};
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
+    NSError *error;
+    [self.store.sessionManager.session sendData:data
+                                        toPeers:self.store.sessionManager.session.connectedPeers
+                                       withMode:MCSessionSendDataReliable
+                                          error:&error];
+    if (error) {
+        NSLog(@"error");
+    }
+    
 }
 
 -(void)didReceiveDataWithNotification:(NSNotification *)notification{
-    MCPeerID *peerID = [[notification userInfo] objectForKey:@"peerID"];
-    NSString *peerDisplayName = peerID.displayName;
+    NSLog(@"VC Notification");
     
-    NSData *receivedData = [[notification userInfo] objectForKey:@"data"];
-    NSString *receivedText = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    NSDictionary *notificationDictionary = notification.userInfo;
+    NSDictionary *receivedDataDictionary = [NSJSONSerialization JSONObjectWithData:notificationDictionary[@"data"] options:0 error:nil];
+    MCPeerID *fromPeer = notificationDictionary[@"peerID"];
+    NSString *message = receivedDataDictionary[@"message"];
     
-//    
-//    [_tvChat performSelectorOnMainThread:@selector(setText:) withObject:[_tvChat.text stringByAppendingString:[NSString stringWithFormat:@"%@ wrote:\n%@\n\n", peerDisplayName, receivedText]] waitUntilDone:NO];
+    
+    self.label.text = [NSString stringWithFormat:@"%@ says %@",fromPeer.displayName,message];
+
 }
 
 @end

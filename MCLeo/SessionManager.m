@@ -31,6 +31,9 @@
 {
     if ([self.session.connectedPeers count] == self.numberOfPeers) {
         [self.advertiser stop];
+//        if (self.session.myPeerID == peerID) {
+//            [self.session disconnect];
+//        }
     }
     
     NSDictionary *stateChangeDict = @{@"peerWithChangedState":peerID,@"state":[NSNumber numberWithInt:state]};
@@ -43,12 +46,13 @@
 
 -(void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID
 {
+    NSLog(@"Received Data");
     
-    NSDictionary *dict = @{@"data": data,@"peerID":peerID};
+    NSDictionary *dataDict = @{@"data": data,@"peerID":peerID};
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didReceiveData"
                                                         object:nil
-                                                      userInfo:dict];
+                                                      userInfo:dataDict];
 }
 
 
@@ -88,7 +92,8 @@
         NSLog(@"begin advertising");
         self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:@"connection"
                                                                discoveryInfo:nil
-                                                                    session:self.session];
+                                                                     session:self.session];
+        
         [self.advertiser start];
     }
     else{

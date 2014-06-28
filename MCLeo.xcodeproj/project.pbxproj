@@ -1,0 +1,492 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		718001621959E7D400FE5F57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718001611959E7D400FE5F57 /* Foundation.framework */; };
+		718001641959E7D400FE5F57 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718001631959E7D400FE5F57 /* CoreGraphics.framework */; };
+		718001661959E7D400FE5F57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718001651959E7D400FE5F57 /* UIKit.framework */; };
+		7180016C1959E7D400FE5F57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7180016A1959E7D400FE5F57 /* InfoPlist.strings */; };
+		7180016E1959E7D400FE5F57 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7180016D1959E7D400FE5F57 /* main.m */; };
+		718001721959E7D400FE5F57 /* LMRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 718001711959E7D400FE5F57 /* LMRAppDelegate.m */; };
+		718001751959E7D400FE5F57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718001731959E7D400FE5F57 /* Main.storyboard */; };
+		718001781959E7D400FE5F57 /* LMRFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718001771959E7D400FE5F57 /* LMRFirstViewController.m */; };
+		7180017B1959E7D400FE5F57 /* LMRSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7180017A1959E7D400FE5F57 /* LMRSecondViewController.m */; };
+		7180017D1959E7D400FE5F57 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7180017C1959E7D400FE5F57 /* Images.xcassets */; };
+		718001841959E7D400FE5F57 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718001831959E7D400FE5F57 /* XCTest.framework */; };
+		718001851959E7D400FE5F57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718001611959E7D400FE5F57 /* Foundation.framework */; };
+		718001861959E7D400FE5F57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718001651959E7D400FE5F57 /* UIKit.framework */; };
+		7180018E1959E7D400FE5F57 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7180018C1959E7D400FE5F57 /* InfoPlist.strings */; };
+		718001901959E7D400FE5F57 /* MCLeoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7180018F1959E7D400FE5F57 /* MCLeoTests.m */; };
+		7180019E1959F04200FE5F57 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7180019D1959F04200FE5F57 /* DataStore.m */; };
+		7180DACC195C5DB9009E747C /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7180DACB195C5DB9009E747C /* SessionManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		718001871959E7D400FE5F57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 718001561959E7D400FE5F57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7180015D1959E7D400FE5F57;
+			remoteInfo = MCLeo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7180015E1959E7D400FE5F57 /* MCLeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCLeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		718001611959E7D400FE5F57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		718001631959E7D400FE5F57 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		718001651959E7D400FE5F57 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		718001691959E7D400FE5F57 /* MCLeo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MCLeo-Info.plist"; sourceTree = "<group>"; };
+		7180016B1959E7D400FE5F57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7180016D1959E7D400FE5F57 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7180016F1959E7D400FE5F57 /* MCLeo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MCLeo-Prefix.pch"; sourceTree = "<group>"; };
+		718001701959E7D400FE5F57 /* LMRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMRAppDelegate.h; sourceTree = "<group>"; };
+		718001711959E7D400FE5F57 /* LMRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMRAppDelegate.m; sourceTree = "<group>"; };
+		718001741959E7D400FE5F57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		718001761959E7D400FE5F57 /* LMRFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMRFirstViewController.h; sourceTree = "<group>"; };
+		718001771959E7D400FE5F57 /* LMRFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMRFirstViewController.m; sourceTree = "<group>"; };
+		718001791959E7D400FE5F57 /* LMRSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMRSecondViewController.h; sourceTree = "<group>"; };
+		7180017A1959E7D400FE5F57 /* LMRSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMRSecondViewController.m; sourceTree = "<group>"; };
+		7180017C1959E7D400FE5F57 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		718001821959E7D400FE5F57 /* MCLeoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCLeoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		718001831959E7D400FE5F57 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7180018B1959E7D400FE5F57 /* MCLeoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MCLeoTests-Info.plist"; sourceTree = "<group>"; };
+		7180018D1959E7D400FE5F57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7180018F1959E7D400FE5F57 /* MCLeoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCLeoTests.m; sourceTree = "<group>"; };
+		7180019C1959F04200FE5F57 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
+		7180019D1959F04200FE5F57 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
+		7180DACA195C5DB9009E747C /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
+		7180DACB195C5DB9009E747C /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7180015B1959E7D400FE5F57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				718001641959E7D400FE5F57 /* CoreGraphics.framework in Frameworks */,
+				718001661959E7D400FE5F57 /* UIKit.framework in Frameworks */,
+				718001621959E7D400FE5F57 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7180017F1959E7D400FE5F57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				718001841959E7D400FE5F57 /* XCTest.framework in Frameworks */,
+				718001861959E7D400FE5F57 /* UIKit.framework in Frameworks */,
+				718001851959E7D400FE5F57 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		718001551959E7D400FE5F57 = {
+			isa = PBXGroup;
+			children = (
+				718001671959E7D400FE5F57 /* MCLeo */,
+				718001891959E7D400FE5F57 /* MCLeoTests */,
+				718001601959E7D400FE5F57 /* Frameworks */,
+				7180015F1959E7D400FE5F57 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7180015F1959E7D400FE5F57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7180015E1959E7D400FE5F57 /* MCLeo.app */,
+				718001821959E7D400FE5F57 /* MCLeoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		718001601959E7D400FE5F57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				718001611959E7D400FE5F57 /* Foundation.framework */,
+				718001631959E7D400FE5F57 /* CoreGraphics.framework */,
+				718001651959E7D400FE5F57 /* UIKit.framework */,
+				718001831959E7D400FE5F57 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		718001671959E7D400FE5F57 /* MCLeo */ = {
+			isa = PBXGroup;
+			children = (
+				718001701959E7D400FE5F57 /* LMRAppDelegate.h */,
+				718001711959E7D400FE5F57 /* LMRAppDelegate.m */,
+				718001731959E7D400FE5F57 /* Main.storyboard */,
+				718001761959E7D400FE5F57 /* LMRFirstViewController.h */,
+				718001771959E7D400FE5F57 /* LMRFirstViewController.m */,
+				718001791959E7D400FE5F57 /* LMRSecondViewController.h */,
+				7180017A1959E7D400FE5F57 /* LMRSecondViewController.m */,
+				7180019C1959F04200FE5F57 /* DataStore.h */,
+				7180019D1959F04200FE5F57 /* DataStore.m */,
+				7180DACA195C5DB9009E747C /* SessionManager.h */,
+				7180DACB195C5DB9009E747C /* SessionManager.m */,
+				7180017C1959E7D400FE5F57 /* Images.xcassets */,
+				718001681959E7D400FE5F57 /* Supporting Files */,
+			);
+			path = MCLeo;
+			sourceTree = "<group>";
+		};
+		718001681959E7D400FE5F57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				718001691959E7D400FE5F57 /* MCLeo-Info.plist */,
+				7180016A1959E7D400FE5F57 /* InfoPlist.strings */,
+				7180016D1959E7D400FE5F57 /* main.m */,
+				7180016F1959E7D400FE5F57 /* MCLeo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		718001891959E7D400FE5F57 /* MCLeoTests */ = {
+			isa = PBXGroup;
+			children = (
+				7180018F1959E7D400FE5F57 /* MCLeoTests.m */,
+				7180018A1959E7D400FE5F57 /* Supporting Files */,
+			);
+			path = MCLeoTests;
+			sourceTree = "<group>";
+		};
+		7180018A1959E7D400FE5F57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7180018B1959E7D400FE5F57 /* MCLeoTests-Info.plist */,
+				7180018C1959E7D400FE5F57 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7180015D1959E7D400FE5F57 /* MCLeo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 718001931959E7D400FE5F57 /* Build configuration list for PBXNativeTarget "MCLeo" */;
+			buildPhases = (
+				7180015A1959E7D400FE5F57 /* Sources */,
+				7180015B1959E7D400FE5F57 /* Frameworks */,
+				7180015C1959E7D400FE5F57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MCLeo;
+			productName = MCLeo;
+			productReference = 7180015E1959E7D400FE5F57 /* MCLeo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		718001811959E7D400FE5F57 /* MCLeoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 718001961959E7D400FE5F57 /* Build configuration list for PBXNativeTarget "MCLeoTests" */;
+			buildPhases = (
+				7180017E1959E7D400FE5F57 /* Sources */,
+				7180017F1959E7D400FE5F57 /* Frameworks */,
+				718001801959E7D400FE5F57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				718001881959E7D400FE5F57 /* PBXTargetDependency */,
+			);
+			name = MCLeoTests;
+			productName = MCLeoTests;
+			productReference = 718001821959E7D400FE5F57 /* MCLeoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		718001561959E7D400FE5F57 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LMR;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Leo Reubelt";
+				TargetAttributes = {
+					718001811959E7D400FE5F57 = {
+						TestTargetID = 7180015D1959E7D400FE5F57;
+					};
+				};
+			};
+			buildConfigurationList = 718001591959E7D400FE5F57 /* Build configuration list for PBXProject "MCLeo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 718001551959E7D400FE5F57;
+			productRefGroup = 7180015F1959E7D400FE5F57 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7180015D1959E7D400FE5F57 /* MCLeo */,
+				718001811959E7D400FE5F57 /* MCLeoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7180015C1959E7D400FE5F57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7180017D1959E7D400FE5F57 /* Images.xcassets in Resources */,
+				7180016C1959E7D400FE5F57 /* InfoPlist.strings in Resources */,
+				718001751959E7D400FE5F57 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		718001801959E7D400FE5F57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7180018E1959E7D400FE5F57 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7180015A1959E7D400FE5F57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				718001781959E7D400FE5F57 /* LMRFirstViewController.m in Sources */,
+				718001721959E7D400FE5F57 /* LMRAppDelegate.m in Sources */,
+				7180DACC195C5DB9009E747C /* SessionManager.m in Sources */,
+				7180017B1959E7D400FE5F57 /* LMRSecondViewController.m in Sources */,
+				7180016E1959E7D400FE5F57 /* main.m in Sources */,
+				7180019E1959F04200FE5F57 /* DataStore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7180017E1959E7D400FE5F57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				718001901959E7D400FE5F57 /* MCLeoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		718001881959E7D400FE5F57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7180015D1959E7D400FE5F57 /* MCLeo */;
+			targetProxy = 718001871959E7D400FE5F57 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7180016A1959E7D400FE5F57 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7180016B1959E7D400FE5F57 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		718001731959E7D400FE5F57 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				718001741959E7D400FE5F57 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7180018C1959E7D400FE5F57 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7180018D1959E7D400FE5F57 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		718001911959E7D400FE5F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		718001921959E7D400FE5F57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		718001941959E7D400FE5F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MCLeo/MCLeo-Prefix.pch";
+				INFOPLIST_FILE = "MCLeo/MCLeo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		718001951959E7D400FE5F57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MCLeo/MCLeo-Prefix.pch";
+				INFOPLIST_FILE = "MCLeo/MCLeo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		718001971959E7D400FE5F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MCLeo.app/MCLeo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MCLeo/MCLeo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MCLeoTests/MCLeoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		718001981959E7D400FE5F57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MCLeo.app/MCLeo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MCLeo/MCLeo-Prefix.pch";
+				INFOPLIST_FILE = "MCLeoTests/MCLeoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		718001591959E7D400FE5F57 /* Build configuration list for PBXProject "MCLeo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				718001911959E7D400FE5F57 /* Debug */,
+				718001921959E7D400FE5F57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		718001931959E7D400FE5F57 /* Build configuration list for PBXNativeTarget "MCLeo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				718001941959E7D400FE5F57 /* Debug */,
+				718001951959E7D400FE5F57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		718001961959E7D400FE5F57 /* Build configuration list for PBXNativeTarget "MCLeoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				718001971959E7D400FE5F57 /* Debug */,
+				718001981959E7D400FE5F57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 718001561959E7D400FE5F57 /* Project object */;
+}

@@ -15,12 +15,10 @@
     self = [super init];
     
     if (self) {
-        self.numberOfPeers = 2;
+        self.numberOfPeers = 1;
         self.session = nil;
         self.browser = nil;
         self.advertiser = nil;
-        self.peers = [[NSMutableArray alloc]init];
-        self.sessionName = @"Session";
     }
     
     return self;
@@ -31,6 +29,9 @@
 
 -(void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
 {
+    if ([self.session.connectedPeers count] == self.numberOfPeers) {
+        [self.advertiser stop];
+    }
     
     NSDictionary *stateChangeDict = @{@"peerWithChangedState":peerID,@"state":[NSNumber numberWithInt:state]};
     
@@ -69,8 +70,6 @@
 -(void)createSessionWithName:(NSString *)displayName{
    
     MCPeerID *peerID = [[MCPeerID alloc]initWithDisplayName:displayName];
-    //why not just add peer?
-    [self.peers addObject:peerID];
     self.session = [[MCSession alloc]initWithPeer:peerID];
     self.session.delegate = self;
 }

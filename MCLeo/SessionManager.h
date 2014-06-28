@@ -14,9 +14,7 @@
 @property (nonatomic, strong) MCSession *session;
 @property (nonatomic, strong) MCBrowserViewController *browser;
 @property (nonatomic, strong) MCAdvertiserAssistant *advertiser;
-@property (nonatomic, strong) NSMutableArray *peers;
 @property (nonatomic) NSInteger numberOfPeers;
-@property (nonatomic, strong) NSString *sessionName;
 
 -(void)createSessionWithName:(NSString *)displayName;
 -(void)createBrowser;

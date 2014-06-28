@@ -32,7 +32,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(stateChangeWithNotification:)
                                                  name:@"peerStateChange"
-                                               object:self.store.sessionManager];
+                                               object:nil];
 
 }
 
@@ -55,7 +55,7 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.store.sessionManager.peers count];
+    return [self.store.sessionManager.session.connectedPeers count];
 }
 
 
@@ -63,7 +63,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    MCPeerID *peerID = [self.store.sessionManager.peers objectAtIndex:indexPath.row];
+    MCPeerID *peerID = [self.store.sessionManager.session.connectedPeers objectAtIndex:indexPath.row];
     
     cell.textLabel.text = peerID.displayName;
     
@@ -74,31 +74,24 @@
 
 -(void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController{
     [self.store.sessionManager.browser dismissViewControllerAnimated:YES completion:nil];
+    [self.peersTableView reloadData];
 }
 
 -(void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController{
-      [self.store.sessionManager.browser dismissViewControllerAnimated:YES completion:nil];
+    [self.store.sessionManager.browser dismissViewControllerAnimated:YES completion:nil];
+    [self.peersTableView reloadData];
 }
 
 
 -(void)stateChangeWithNotification:(NSNotification*)stateChange
 {
-    MCPeerID *peerID = [stateChange.userInfo objectForKey:@"peerWithChangedState"];
-    MCSessionState state = [[stateChange.userInfo objectForKey:@"state"] intValue];
-    
-    if (state == MCSessionStateConnected && ![self.store.sessionManager.peers containsObject:peerID])
-        {
-            [self.store.sessionManager.peers addObject:peerID];
-        }
-        else if (state == MCSessionStateNotConnected && [self.store.sessionManager.peers containsObject:peerID]){
-           [self.store.sessionManager.peers removeObject:peerID];
-        }
-        else if (state == MCSessionStateConnected && !(self.store.sessionManager.peers[0] == peerID)){
-            [self.store.sessionManager.session disconnect];
-        }
-    
-        [self.peersTableView reloadData];
-
+    if ([self.store.sessionManager.session.connectedPeers count] == self.store.sessionManager.numberOfPeers) {
+        [self.store.sessionManager.advertiser stop];
+        [self.store.sessionManager.browser dismissViewControllerAnimated:YES completion:nil];
+        NSLog(@"number ");
+    }
+    NSLog(@"state change");
+    [self.peersTableView reloadData];
 }
 
 
@@ -108,7 +101,6 @@
 - (IBAction)connectButton:(id)sender {
     NSLog(@"Connect Button");
     [self.peerNameField resignFirstResponder];
-    [self.store.sessionManager.peers removeAllObjects];
     [self.store.sessionManager createSessionWithName:self.peerNameField.text];
     [self.store.sessionManager beginAdvertising:YES];
     [self.store.sessionManager createBrowser];
@@ -119,7 +111,6 @@
 
 - (IBAction)disconnectButton:(id)sender {
     [self.store.sessionManager.session disconnect];
-    [self.store.sessionManager.peers removeAllObjects];
     [self.peersTableView reloadData];
 }
 

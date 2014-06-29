@@ -11,7 +11,8 @@
 @implementation SessionManager
 
 
--(id)init{
+-(id)init
+{
     self = [super init];
     
     if (self) {
@@ -29,13 +30,6 @@
 
 -(void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
 {
-    if ([self.session.connectedPeers count] == self.numberOfPeers) {
-        [self.advertiser stop];
-        if (self.session.myPeerID == peerID) {
-            [self.session disconnect];
-        }
-    }
-    
     NSDictionary *stateChangeDict = @{@"peerWithChangedState":peerID,@"state":[NSNumber numberWithInt:state]};
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"peerStateChange"
@@ -46,15 +40,12 @@
 
 -(void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID
 {
-    NSLog(@"Received Data");
-    
     NSDictionary *dataDict = @{@"data": data,@"peerID":peerID};
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didReceiveData"
                                                         object:nil
                                                       userInfo:dataDict];
 }
-
 
 -(void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress{}
 
@@ -64,44 +55,27 @@
 
 
 
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - Session Setup Methods
 
--(void)createSessionWithName:(NSString *)displayName{
-   
-    MCPeerID *peerID = [[MCPeerID alloc]initWithDisplayName:displayName];
-    self.session = [[MCSession alloc]initWithPeer:peerID];
+-(void)createSession
+{
+    self.session = [[MCSession alloc]initWithPeer:self.peerID];
     self.session.delegate = self;
 }
 
 
--(void)createBrowser{
-    
+-(void)beginAdvertising
+{
+    self.advertiser = [[MCAdvertiserAssistant alloc]initWithServiceType:@"connection" discoveryInfo:nil session:self.session];
+    [self.advertiser start];
+}
+
+-(void)createBrowser
+{
     self.browser = [[MCBrowserViewController alloc] initWithServiceType:@"connection" session:self.session];
-    NSLog(@"browser create");
-    
+    self.browser.maximumNumberOfPeers = self.numberOfPeers+1;
 }
-
--(void)beginAdvertising:(BOOL)isHost{
-    if (isHost) {
-        
-        NSLog(@"begin advertising");
-        self.advertiser = [[MCAdvertiserAssistant alloc] initWithServiceType:@"connection"
-                                                               discoveryInfo:nil
-                                                                     session:self.session];
-        
-        [self.advertiser start];
-    }
-    else{
-        [self.advertiser stop];
-        self.advertiser = nil;
-    }
-}
-
-
 
 @end

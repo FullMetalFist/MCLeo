@@ -10,7 +10,8 @@
 
 @implementation DataStore
 
-+ (instancetype)sharedLocationsDataStore {
++ (instancetype)sharedLocationsDataStore
+{
     static DataStore *_dataStore = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

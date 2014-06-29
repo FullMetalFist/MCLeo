@@ -11,13 +11,15 @@
 
 @interface SessionManager : NSObject <MCSessionDelegate>
 
+@property (nonatomic, strong) MCPeerID *peerID;
 @property (nonatomic, strong) MCSession *session;
 @property (nonatomic, strong) MCBrowserViewController *browser;
 @property (nonatomic, strong) MCAdvertiserAssistant *advertiser;
 @property (nonatomic) NSInteger numberOfPeers;
+@property (nonatomic) BOOL isHost;
 
--(void)createSessionWithName:(NSString *)displayName;
+-(void)createSession;
 -(void)createBrowser;
--(void)beginAdvertising:(BOOL)isHost;
+-(void)beginAdvertising;
 
 @end

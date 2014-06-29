@@ -12,6 +12,10 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
+
+
+
+
 - (IBAction)sendButton:(id)sender;
 
 @end
@@ -21,6 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     self.store = [DataStore sharedLocationsDataStore];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -35,8 +41,11 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)sendButton:(id)sender {
-    NSDictionary *dictionary = @{@"message": @"Hello Leo"};
+
+
+- (IBAction)sendButton:(id)sender
+{
+    NSDictionary *dictionary = @{@"message": @"Hello"};
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
     NSError *error;
     [self.store.sessionManager.session sendData:data
@@ -49,7 +58,8 @@
     
 }
 
--(void)didReceiveDataWithNotification:(NSNotification *)notification{
+-(void)didReceiveDataWithNotification:(NSNotification *)notification
+{
     NSLog(@"VC Notification");
     
     NSDictionary *notificationDictionary = notification.userInfo;
@@ -57,8 +67,8 @@
     MCPeerID *fromPeer = notificationDictionary[@"peerID"];
     NSString *message = receivedDataDictionary[@"message"];
     
-    
     self.label.text = [NSString stringWithFormat:@"%@ says %@",fromPeer.displayName,message];
+    [self.label updateConstraints];
 
 }
 

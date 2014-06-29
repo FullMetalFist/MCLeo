@@ -10,10 +10,17 @@
 
 @interface LMRFirstViewController ()
 
+
 @property (strong, nonatomic) IBOutlet UITextField *peerNameField;
+@property (strong, nonatomic) IBOutlet UISwitch *advertiseSwitchOutlet;
+@property (strong, nonatomic) IBOutlet UIButton *browseButtonOutlet;
+
+
 @property (strong, nonatomic) IBOutlet UITableView *peersTableView;
 
-- (IBAction)connectButton:(id)sender;
+- (IBAction)peerNameTextEntered:(id)sender;
+- (IBAction)advertiseSwitch:(id)sender;
+- (IBAction)browseButton:(id)sender;
 - (IBAction)disconnectButton:(id)sender;
 
 
@@ -27,57 +34,73 @@
     self.store = [DataStore sharedLocationsDataStore];
     [self.peersTableView setDelegate:self];
     [self.peersTableView setDataSource:self];
-    self.peerNameField.delegate = self;
+    [self.peerNameField setDelegate:self];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(stateChangeWithNotification:)
                                                  name:@"peerStateChange"
                                                object:nil];
-
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.store.sessionManager.advertiser stop];
+    [self.advertiseSwitchOutlet setOn:NO];
 }
 
 
--(void)textFieldDidEndEditing:(UITextField *)peerNameField{
+- (IBAction)peerNameTextEntered:(id)sender
+{
     [self.peerNameField resignFirstResponder];
+    self.store.sessionManager.peerID = [[MCPeerID alloc]initWithDisplayName:self.peerNameField.text];
+    NSLog(@"Peer Name Entered");
 }
+
+
+
+
 
 #pragma mark - TableView Methods
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return [self.store.sessionManager.session.connectedPeers count];
 }
 
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    
     MCPeerID *peerID = [self.store.sessionManager.session.connectedPeers objectAtIndex:indexPath.row];
-    
     cell.textLabel.text = peerID.displayName;
-    
     return cell;
 }
 
+
+
+
+
 #pragma mark -Session Methods
 
--(void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController{
+-(void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController
+{
     [self.store.sessionManager.browser dismissViewControllerAnimated:YES completion:nil];
     [self.peersTableView reloadData];
 }
 
--(void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController{
+-(void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController
+{
     [self.store.sessionManager.browser dismissViewControllerAnimated:YES completion:nil];
     [self.peersTableView reloadData];
 }
@@ -85,34 +108,60 @@
 
 -(void)stateChangeWithNotification:(NSNotification*)stateChange
 {
-    if ([self.store.sessionManager.session.connectedPeers count] == self.store.sessionManager.numberOfPeers) {
-        [self.store.sessionManager.advertiser stop];
-        [self.store.sessionManager.browser dismissViewControllerAnimated:YES completion:nil];
-        NSLog(@"number ");
-    }
-    NSLog(@"state change");
+   // MCSessionState state = [[stateChange.userInfo objectForKey:@"state"]integerValue];
+
+    if ([self.store.sessionManager.session.connectedPeers count] == self.store.sessionManager.numberOfPeers)
+    [self.peersTableView reloadData];
+}
+
+- (void)advertiserAssistantDidDismissInvitation:(MCAdvertiserAssistant *)advertiserAssistant{
+    NSLog(@"Advertiser Gone");
     [self.peersTableView reloadData];
 }
 
 
 
+
+
 #pragma mark -IBActions
 
-- (IBAction)connectButton:(id)sender {
-    NSLog(@"Connect Button");
+- (IBAction)advertiseSwitch:(id)sender
+{
+    self.browseButtonOutlet.enabled = !self.advertiseSwitchOutlet.isOn;
     [self.peerNameField resignFirstResponder];
-    [self.store.sessionManager createSessionWithName:self.peerNameField.text];
-    [self.store.sessionManager beginAdvertising:YES];
+
+    
+    if (self.advertiseSwitchOutlet.isOn)
+    {
+        self.store.sessionManager.peerID = [[MCPeerID alloc]initWithDisplayName:self.peerNameField.text];
+        [self.store.sessionManager createSession];
+        [self.store.sessionManager beginAdvertising];
+    }
+    else
+    {
+        [self.store.sessionManager.advertiser stop];
+    }
+    self.store.sessionManager.advertiser.delegate = self;
+    [self.peersTableView reloadData];
+}
+
+- (IBAction)browseButton:(id)sender
+{
+    [self.peerNameField resignFirstResponder];
+    
+    self.store.sessionManager.peerID = [[MCPeerID alloc]initWithDisplayName:self.peerNameField.text];
+    [self.store.sessionManager createSession];
+    
     [self.store.sessionManager createBrowser];
     self.store.sessionManager.browser.delegate = self;
     [self presentViewController:self.store.sessionManager.browser animated:YES completion:nil];
     [self.peersTableView reloadData];
 }
 
-- (IBAction)disconnectButton:(id)sender {
+- (IBAction)disconnectButton:(id)sender
+{
     [self.store.sessionManager.session disconnect];
     [self.peersTableView reloadData];
 }
-
 
 @end

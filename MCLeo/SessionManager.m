@@ -31,9 +31,9 @@
 {
     if ([self.session.connectedPeers count] == self.numberOfPeers) {
         [self.advertiser stop];
-//        if (self.session.myPeerID == peerID) {
-//            [self.session disconnect];
-//        }
+        if (self.session.myPeerID == peerID) {
+            [self.session disconnect];
+        }
     }
     
     NSDictionary *stateChangeDict = @{@"peerWithChangedState":peerID,@"state":[NSNumber numberWithInt:state]};

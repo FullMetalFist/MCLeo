@@ -13,9 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
 
-
-
-
 - (IBAction)sendButton:(id)sender;
 
 @end
@@ -62,14 +59,14 @@
 {
     NSLog(@"VC Notification");
     
-    NSDictionary *notificationDictionary = notification.userInfo;
-    NSDictionary *receivedDataDictionary = [NSJSONSerialization JSONObjectWithData:notificationDictionary[@"data"] options:0 error:nil];
-    MCPeerID *fromPeer = notificationDictionary[@"peerID"];
-    NSString *message = receivedDataDictionary[@"message"];
-    
-    self.label.text = [NSString stringWithFormat:@"%@ says %@",fromPeer.displayName,message];
-    [self.label updateConstraints];
-
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *notificationDictionary = notification.userInfo;
+        NSDictionary *receivedDataDictionary = [NSJSONSerialization JSONObjectWithData:notificationDictionary[@"data"] options:0 error:nil];
+        MCPeerID *fromPeer = notificationDictionary[@"peerID"];
+        NSString *message = receivedDataDictionary[@"message"];
+        
+        self.label.text = [NSString stringWithFormat:@"%@ says %@",fromPeer.displayName,message];
+    });
 }
 
 @end

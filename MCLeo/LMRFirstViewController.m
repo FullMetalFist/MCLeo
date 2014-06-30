@@ -96,27 +96,39 @@
 -(void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController
 {
     [self.store.sessionManager.browser dismissViewControllerAnimated:YES completion:nil];
-    [self.peersTableView reloadData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.peersTableView reloadData];
+    });
+
 }
 
 -(void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController
 {
     [self.store.sessionManager.browser dismissViewControllerAnimated:YES completion:nil];
-    [self.peersTableView reloadData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.peersTableView reloadData];
+    });
 }
 
 
 -(void)stateChangeWithNotification:(NSNotification*)stateChange
 {
-   // MCSessionState state = [[stateChange.userInfo objectForKey:@"state"]integerValue];
 
     if ([self.store.sessionManager.session.connectedPeers count] == self.store.sessionManager.numberOfPeers)
-    [self.peersTableView reloadData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.peersTableView reloadData];
+        });
 }
 
 - (void)advertiserAssistantDidDismissInvitation:(MCAdvertiserAssistant *)advertiserAssistant{
     NSLog(@"Advertiser Gone");
-    [self.peersTableView reloadData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.peersTableView reloadData];
+    });
 }
 
 
@@ -142,7 +154,10 @@
         [self.store.sessionManager.advertiser stop];
     }
     self.store.sessionManager.advertiser.delegate = self;
-    [self.peersTableView reloadData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.peersTableView reloadData];
+    });
 }
 
 - (IBAction)browseButton:(id)sender
@@ -155,13 +170,19 @@
     [self.store.sessionManager createBrowser];
     self.store.sessionManager.browser.delegate = self;
     [self presentViewController:self.store.sessionManager.browser animated:YES completion:nil];
-    [self.peersTableView reloadData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.peersTableView reloadData];
+    });
 }
 
 - (IBAction)disconnectButton:(id)sender
 {
     [self.store.sessionManager.session disconnect];
-    [self.peersTableView reloadData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.peersTableView reloadData];
+    });
 }
 
 @end

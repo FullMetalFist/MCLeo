@@ -22,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.label.text = @"Label";
     
     self.store = [DataStore sharedLocationsDataStore];
     
@@ -65,7 +65,7 @@
         MCPeerID *fromPeer = notificationDictionary[@"peerID"];
         NSString *message = receivedDataDictionary[@"message"];
         
-        self.label.text = [NSString stringWithFormat:@"%@ says %@",fromPeer.displayName,message];
+        self.label.text = [NSString stringWithFormat:@"%@\nsays\n%@",fromPeer.displayName,message];
     });
 }
 

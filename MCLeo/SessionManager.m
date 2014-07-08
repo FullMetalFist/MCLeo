@@ -69,6 +69,9 @@
 -(void)beginAdvertising
 {
     self.advertiser = [[MCAdvertiserAssistant alloc]initWithServiceType:@"connection" discoveryInfo:nil session:self.session];
+    
+    
+    
     [self.advertiser start];
 }
 

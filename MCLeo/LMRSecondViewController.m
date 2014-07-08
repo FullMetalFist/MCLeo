@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
+@property (weak, nonatomic) IBOutlet UITextField *enterTextField;
+
 
 - (IBAction)sendButton:(id)sender;
 
@@ -42,7 +44,8 @@
 
 - (IBAction)sendButton:(id)sender
 {
-    NSDictionary *dictionary = @{@"message": @"Hello"};
+    NSString *dataString = self.enterTextField.text;
+    NSDictionary *dictionary = @{@"message": dataString};
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
     NSError *error;
     [self.store.sessionManager.session sendData:data

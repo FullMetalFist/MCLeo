@@ -44,6 +44,7 @@
 
 - (IBAction)sendButton:(id)sender
 {
+    [self.enterTextField resignFirstResponder];
     NSString *dataString = self.enterTextField.text;
     NSDictionary *dictionary = @{@"message": dataString};
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];

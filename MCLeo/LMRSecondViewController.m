@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
 @property (weak, nonatomic) IBOutlet UITextField *enterTextField;
+@property (weak, nonatomic) IBOutlet UITextView *textField;
 
 
 - (IBAction)sendButton:(id)sender;
@@ -25,7 +26,8 @@
 {
     [super viewDidLoad];
     self.label.text = @"";
-    
+    self.textField.text = @"";
+    self.label.hidden = YES;
     
     self.store = [DataStore sharedLocationsDataStore];
 
@@ -70,15 +72,15 @@
         MCPeerID *fromPeer = notificationDictionary[@"peerID"];
         NSString *message = receivedDataDictionary[@"message"];
         NSString *labelText;
-        if ([self.label.text isEqualToString:@""])
+        if ([self.textField.text isEqualToString:@""])
         {
             labelText = [NSString stringWithFormat:@"Message From: %@\n%@",fromPeer.displayName,message];
         }
         else
         {
-            labelText = [NSString stringWithFormat:@"%@\n%@",self.label.text,message];
+            labelText = [NSString stringWithFormat:@"%@\n%@",self.textField.text,message];
         }
-        self.label.text = labelText;
+        self.textField.text = labelText;
     });
 }
 

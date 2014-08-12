@@ -24,10 +24,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.label.text = @"Label";
+    self.label.text = @"";
+    
     
     self.store = [DataStore sharedLocationsDataStore];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didReceiveDataWithNotification:)
                                                  name:@"didReceiveData"
@@ -68,8 +69,16 @@
         NSDictionary *receivedDataDictionary = [NSJSONSerialization JSONObjectWithData:notificationDictionary[@"data"] options:0 error:nil];
         MCPeerID *fromPeer = notificationDictionary[@"peerID"];
         NSString *message = receivedDataDictionary[@"message"];
-        
-        self.label.text = [NSString stringWithFormat:@"%@\nsays\n%@",fromPeer.displayName,message];
+        NSString *labelText;
+        if ([self.label.text isEqualToString:@""])
+        {
+            labelText = [NSString stringWithFormat:@"Message From: %@\n%@",fromPeer.displayName,message];
+        }
+        else
+        {
+            labelText = [NSString stringWithFormat:@"%@\n%@",self.label.text,message];
+        }
+        self.label.text = labelText;
     });
 }
 

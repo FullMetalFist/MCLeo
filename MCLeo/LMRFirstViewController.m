@@ -179,7 +179,8 @@
 - (IBAction)disconnectButton:(id)sender
 {
     [self.store.sessionManager.session disconnect];
-    
+    [self.advertiseSwitchOutlet setOn:NO animated:YES];
+    self.browseButtonOutlet.enabled = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.peersTableView reloadData];
     });

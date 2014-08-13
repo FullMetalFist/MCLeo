@@ -50,6 +50,11 @@
 - (IBAction)sendButton:(id)sender
 {
     [self.enterTextField resignFirstResponder];
+    if (([self.store.sessionManager.session.connectedPeers count] == 0)) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Establish Connection\nBefore Sending Message" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    else {
     NSString *dataString = self.enterTextField.text;
     NSDictionary *dictionary = @{@"message": dataString};
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
@@ -58,10 +63,11 @@
                                         toPeers:self.store.sessionManager.session.connectedPeers
                                        withMode:MCSessionSendDataReliable
                                           error:&error];
-    if (error) {
-        NSLog(@"error");
-    }
+        if (error) {
+            NSLog(@"error");
+        }
     
+    }
 }
 
 -(void)didReceiveDataWithNotification:(NSNotification *)notification

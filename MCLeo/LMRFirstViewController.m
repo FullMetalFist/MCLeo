@@ -37,7 +37,6 @@
     [self.peersTableView setDataSource:self];
     [self.peerNameField setDelegate:self];
     self.tabBarController.delegate = self;
-
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(stateChangeWithNotification:)
@@ -130,6 +129,15 @@
 
     }
 }
+
+//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+//    LMRSecondViewController *secondVC = self.tabBarController.viewControllers[1];
+//    
+//    if (!([self.store.sessionManager.session.connectedPeers count]==2 && self.store.sessionManager.session.connectedPeers) && (viewController == secondVC)) {
+//        return NO;
+//    }
+//    else return YES;
+//}
 
 - (void)advertiserAssistantDidDismissInvitation:(MCAdvertiserAssistant *)advertiserAssistant{
     NSLog(@"Advertiser Gone");

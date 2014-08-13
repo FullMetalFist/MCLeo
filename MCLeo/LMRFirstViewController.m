@@ -133,7 +133,7 @@
 //- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
 //    LMRSecondViewController *secondVC = self.tabBarController.viewControllers[1];
 //    
-//    if (!([self.store.sessionManager.session.connectedPeers count]==2 && self.store.sessionManager.session.connectedPeers) && (viewController == secondVC)) {
+//    if (!([self.store.sessionManager.session.connectedPeers count]==1 && self.store.sessionManager.session.connectedPeers) && (viewController == secondVC)) {
 //        return NO;
 //    }
 //    else return YES;

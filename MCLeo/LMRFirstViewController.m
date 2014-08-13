@@ -7,6 +7,7 @@
 //
 
 #import "LMRFirstViewController.h"
+#import "LMRSecondViewController.h"
 
 @interface LMRFirstViewController ()
 
@@ -35,6 +36,7 @@
     [self.peersTableView setDelegate:self];
     [self.peersTableView setDataSource:self];
     [self.peerNameField setDelegate:self];
+    self.tabBarController.delegate = self;
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -121,6 +123,10 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.peersTableView reloadData];
         });
+//        NSArray *tabBarControllers = [self.tabBarController viewControllers];
+//        LMRSecondViewController *secondVC = tabBarControllers[1];
+//        self.tabBarController.selectedViewController = secondVC;
+        
     }
 }
 

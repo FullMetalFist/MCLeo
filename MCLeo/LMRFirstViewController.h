@@ -10,7 +10,7 @@
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 #import "DataStore.h"
 
-@interface LMRFirstViewController : UIViewController <MCBrowserViewControllerDelegate,MCAdvertiserAssistantDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, MCBrowserViewControllerDelegate>
+@interface LMRFirstViewController : UIViewController <MCBrowserViewControllerDelegate,MCAdvertiserAssistantDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, MCBrowserViewControllerDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) DataStore *store;
 

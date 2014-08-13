@@ -164,7 +164,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Do Stuff" image="second" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="Message" image="second" id="Z7h-1E-pvt"/>
                     <connections>
                         <outlet property="enterTextField" destination="fcv-vM-xAk" id="zuE-tB-6yG"/>
                         <outlet property="textField" destination="ezL-Pi-xJq" id="QVT-Xl-ca0"/>

@@ -69,9 +69,6 @@
 -(void)beginAdvertising
 {
     self.advertiser = [[MCAdvertiserAssistant alloc]initWithServiceType:@"connection" discoveryInfo:nil session:self.session];
-    
-    
-    
     [self.advertiser start];
 }
 
@@ -79,6 +76,10 @@
 {
     self.browser = [[MCBrowserViewController alloc] initWithServiceType:@"connection" session:self.session];
     self.browser.maximumNumberOfPeers = self.numberOfPeers+1;
+}
+
+-(void)stopAdcertising{
+    [self.advertiser stop];
 }
 
 @end

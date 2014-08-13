@@ -134,15 +134,7 @@
                                     <action selector="sendButton:" destination="QUy-BD-bpt" eventType="touchUpInside" id="iO9-6k-ecW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Thu-SK-KC1">
-                                <rect key="frame" x="20" y="296" width="280" height="132"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.91618546199999995" green="0.88688885949999996" blue="0.7111021032" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fcv-vM-xAk">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fcv-vM-xAk">
                                 <rect key="frame" x="103" y="192" width="197" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -162,7 +154,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezL-Pi-xJq">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezL-Pi-xJq">
                                 <rect key="frame" x="20" y="52" width="280" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.91618546199999995" green="0.88688885949999996" blue="0.7111021032" alpha="1" colorSpace="calibratedRGB"/>
@@ -175,7 +167,6 @@
                     <tabBarItem key="tabBarItem" title="Do Stuff" image="second" id="Z7h-1E-pvt"/>
                     <connections>
                         <outlet property="enterTextField" destination="fcv-vM-xAk" id="zuE-tB-6yG"/>
-                        <outlet property="label" destination="Thu-SK-KC1" id="Iwr-xl-qsC"/>
                         <outlet property="textField" destination="ezL-Pi-xJq" id="QVT-Xl-ca0"/>
                     </connections>
                 </viewController>

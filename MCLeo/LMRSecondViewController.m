@@ -10,7 +10,6 @@
 
 @interface LMRSecondViewController ()
 
-@property (strong, nonatomic) IBOutlet UILabel *label;
 
 @property (weak, nonatomic) IBOutlet UITextField *enterTextField;
 @property (weak, nonatomic) IBOutlet UITextView *textField;
@@ -25,10 +24,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.label.text = @"";
     self.textField.text = @"";
-    self.label.hidden = YES;
-    
+
     self.store = [DataStore sharedLocationsDataStore];
 
     [[NSNotificationCenter defaultCenter] addObserver:self

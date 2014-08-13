@@ -116,11 +116,12 @@
 -(void)stateChangeWithNotification:(NSNotification*)stateChange
 {
 
-    if ([self.store.sessionManager.session.connectedPeers count] == self.store.sessionManager.numberOfPeers)
-        
+    if ([self.store.sessionManager.session.connectedPeers count] == self.store.sessionManager.numberOfPeers){
+        [self.store.sessionManager stopAdcertising];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.peersTableView reloadData];
         });
+    }
 }
 
 - (void)advertiserAssistantDidDismissInvitation:(MCAdvertiserAssistant *)advertiserAssistant{
@@ -132,13 +133,19 @@
 }
 
 
-
-
-
 #pragma mark -IBActions
 
 - (IBAction)advertiseSwitch:(id)sender
 {
+    if ([self.peerNameField.text isEqualToString:@""] || !self.peerNameField.text)
+    {
+        UIAlertView *noNameAlert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Must Enter Name" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [noNameAlert show];
+        [self.advertiseSwitchOutlet setOn:NO animated:YES];
+    }
+    else
+    {
+    
     self.browseButtonOutlet.enabled = !self.advertiseSwitchOutlet.isOn;
     [self.peerNameField resignFirstResponder];
 
@@ -158,10 +165,18 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.peersTableView reloadData];
     });
+    }
 }
 
 - (IBAction)browseButton:(id)sender
 {
+    if ([self.peerNameField.text isEqualToString:@""] || !self.peerNameField.text)
+    {
+        UIAlertView *noNameAlert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Must Enter Name" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [noNameAlert show];
+    }
+    else
+    {
     [self.peerNameField resignFirstResponder];
     
     self.store.sessionManager.peerID = [[MCPeerID alloc]initWithDisplayName:self.peerNameField.text];
@@ -174,11 +189,13 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.peersTableView reloadData];
     });
+    }
 }
 
 - (IBAction)disconnectButton:(id)sender
 {
     [self.store.sessionManager.session disconnect];
+    [self.store.sessionManager stopAdcertising];
     [self.advertiseSwitchOutlet setOn:NO animated:YES];
     self.browseButtonOutlet.enabled = YES;
     dispatch_async(dispatch_get_main_queue(), ^{

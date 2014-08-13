@@ -21,5 +21,6 @@
 -(void)createSession;
 -(void)createBrowser;
 -(void)beginAdvertising;
+-(void)stopAdcertising;
 
 @end

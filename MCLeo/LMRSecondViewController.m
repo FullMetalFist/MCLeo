@@ -40,6 +40,11 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.textField.text = @"";
+    self.enterTextField.text =@"";
+}
+
 
 
 - (IBAction)sendButton:(id)sender
@@ -69,6 +74,7 @@
         MCPeerID *fromPeer = notificationDictionary[@"peerID"];
         NSString *message = receivedDataDictionary[@"message"];
         NSString *labelText;
+        if (![message isEqualToString:@""]){
         if ([self.textField.text isEqualToString:@""])
         {
             labelText = [NSString stringWithFormat:@"Message From: %@\n%@",fromPeer.displayName,message];
@@ -78,6 +84,7 @@
             labelText = [NSString stringWithFormat:@"%@\n%@",self.textField.text,message];
         }
         self.textField.text = labelText;
+        }
     });
 }
 

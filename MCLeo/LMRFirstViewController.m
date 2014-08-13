@@ -84,8 +84,10 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    MCPeerID *peerID = [self.store.sessionManager.session.connectedPeers objectAtIndex:indexPath.row];
-    cell.textLabel.text = peerID.displayName;
+    if (![self.store.sessionManager.session.connectedPeers count]==0 && self.store.sessionManager.session.connectedPeers) {
+        MCPeerID *peerID = [self.store.sessionManager.session.connectedPeers objectAtIndex:indexPath.row];
+        cell.textLabel.text = peerID.displayName;
+    }
     return cell;
 }
 
@@ -119,14 +121,13 @@
 {
 
     if ([self.store.sessionManager.session.connectedPeers count] == self.store.sessionManager.numberOfPeers){
+        NSLog(@"ConnectedYYYY");
         [self.store.sessionManager stopAdcertising];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.peersTableView reloadData];
+            self.tabBarController.selectedIndex = 1;
         });
-//        NSArray *tabBarControllers = [self.tabBarController viewControllers];
-//        LMRSecondViewController *secondVC = tabBarControllers[1];
-//        self.tabBarController.selectedViewController = secondVC;
-        
+
     }
 }
 
@@ -135,6 +136,8 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.peersTableView reloadData];
+        [self.store.sessionManager.advertiser stop];
+        [self.advertiseSwitchOutlet setOn:NO animated:YES];
     });
 }
 
@@ -200,13 +203,19 @@
 
 - (IBAction)disconnectButton:(id)sender
 {
-    [self.store.sessionManager.session disconnect];
-    [self.store.sessionManager stopAdcertising];
-    [self.advertiseSwitchOutlet setOn:NO animated:YES];
-    self.browseButtonOutlet.enabled = YES;
+
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self.store.sessionManager stopAdcertising];
+        [self.advertiseSwitchOutlet setOn:NO animated:YES];
+        self.browseButtonOutlet.enabled = YES;
+        [self.store.sessionManager.session disconnect];
+        [self.peersTableView reloadData];
+        sleep(1);
         [self.peersTableView reloadData];
     });
+
 }
+
+
 
 @end
